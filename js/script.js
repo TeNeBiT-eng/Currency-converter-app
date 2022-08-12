@@ -27,7 +27,7 @@ function loadFlag(element) {
     if (code == element.value) {
       // if currency code of country is equal to option value
       let imgTag = element.parentElement.querySelector("img");
-      imgTag.src = `https://countryflagsapi.com/png/${country_code[code]}`
+      imgTag.src = `https://countryflagsapi.com/png/${country_code[code]}`;
     }
   }
 }
@@ -38,6 +38,14 @@ window.addEventListener("onload", () => {
 
 getButton.addEventListener("click", (e) => {
   e.preventDefault(); // preventing form from submitting
+  getExchangeRate();
+});
+
+const exchangeIcon = document.querySelector(".drop-list .icon");
+exchangeIcon.addEventListener("click", () => {
+  let tempCode = fromCurrency.value; // temporary currency code of FROM drop list
+  fromCurrency.value = toCurrency.value; // passing TO currency code to FROM currency code
+  toCurrency.value = tempCode; // passing temporary code to TO currency code
   getExchangeRate();
 });
 
