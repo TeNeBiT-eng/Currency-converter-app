@@ -59,8 +59,8 @@ function getExchangeRate() {
   if (amountVal == "" || amountVal == "0") {
     amount.value = "1";
     amountVal = 1;
-    exchangeRateTxt.innerText = "Getting exchange rate...";
   }
+  exchangeRateTxt.innerText = "Getting exchange rate...";
   let url = `https://v6.exchangerate-api.com/v6/f40b90e8e0fe9ec60f229262/latest/${fromCurrency.value}`;
   fetch(url)
     .then((res) => res.json())
@@ -68,7 +68,9 @@ function getExchangeRate() {
       let exchangeRate = result.conversion_rates[toCurrency.value];
       let totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
       exchangeRateTxt.innerText = `${amountVal} ${fromCurrency.value} = ${totalExchangeRate} ${toCurrency.value}`;
-    }).catch(() => { //if user is offline or ony other error occured while fetching data then catch function will run
-      exchangeRateTxt.innerText = 'Something went wrong'
     })
+    .catch(() => {
+      //if user is offline or ony other error occured while fetching data then catch function will run
+      exchangeRateTxt.innerText = "Something went wrong";
+    });
 }
