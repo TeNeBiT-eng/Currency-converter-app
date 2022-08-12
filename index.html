@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Currency Converter</title>
-    <link
+    <!-- <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./img/imageEditor.jfif"
-    />
-    <link rel="stylesheet" href="./style.css">
+    /> -->
+    <link rel="stylesheet" href="./style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -27,55 +27,38 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,900&display=swap"
       rel="stylesheet"
     />
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrapper">
-        <header>Currency Converter</header>
-        <form action="#">
-            <div class="amount">
-                <p>Enter Amount</p>
-                <input type="text" value="1">
+      <header>Currency Converter</header>
+      <form action="#">
+        <div class="amount">
+          <p>Enter Amount</p>
+          <input type="text" value="1" />
+        </div>
+        <div class="drop-list">
+          <div class="from">
+            <p>From</p>
+            <div class="select-box">
+              <img src="https://countryflagsapi.com/png/us" alt="flag" />
+              <select></select>
             </div>
-            <div class="drop-list">
-                <div class="from">
-                    <p>From</p>
-                    <div class="select-box">
-                        <img src="https://countryflagsapi.com/png/us" alt="flag">
-                        <select>
-                            <option value="USD">USD</option>
-                            <option value="NPR">NPR</option>
-                            <option value="INR">INR</option>
-                            <option value="PKR">PKR</option>
-                            <option value="MAD">MAD</option>
-                            <!-- <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option> -->
-                        </select>
-                    </div>
-                </div>
-                <div class="icon"><i class="fa-solid fa-right-left"></i></div>
-                <div class="to">
-                    <p>To</p>
-                    <div class="select-box">
-                        <img src="https://countryflagsapi.com/png/ng" alt="flag">
-                        <select>
-                            <option value="USD">USD</option>
-                            <option value="NPR">NPR</option>
-                            <option value="INR">INR</option>
-                            <option value="PKR">PKR</option>
-                            <option value="MAD">MAD</option>
-                            <!-- <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option> -->
-                        </select>
-                    </div>
-                </div>
+          </div>
+          <div class="icon"><i class="fa-solid fa-right-left"></i></div>
+          <div class="to">
+            <p>To</p>
+            <div class="select-box">
+              <img src="https://countryflagsapi.com/png/ng" alt="flag" />
+              <select></select>
             </div>
-            <div class="exchange-rate">1 USD = 118.16 NPR</div>
-            <button>Get Exchange Rate</button>
-        </form>
+          </div>
+        </div>
+        <div class="exchange-rate">Getting exchange rate...</div>
+        <button>Get Exchange Rate</button>
+      </form>
     </div>
 
-    <script src="./script.js" async defer></script>
-</body>
+    <script src="./js/country_list.js" async defer></script>
+    <script src="./js/script.js" async defer></script>
+  </body>
 </html>
