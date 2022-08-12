@@ -46,6 +46,8 @@ exchangeIcon.addEventListener("click", () => {
   let tempCode = fromCurrency.value; // temporary currency code of FROM drop list
   fromCurrency.value = toCurrency.value; // passing TO currency code to FROM currency code
   toCurrency.value = tempCode; // passing temporary code to TO currency code
+  loadFlag(fromCurrency); // calling loadFlag with select element (fromCurrency) of FROM
+  loadFlag(toCurrency); // calling loadFlag with select element (toCurrerncy) of TO
   getExchangeRate();
 });
 
@@ -57,8 +59,8 @@ function getExchangeRate() {
   if (amountVal == "" || amountVal == "0") {
     amount.value = "1";
     amountVal = 1;
+    exchangeRateTxt.innerText = "Getting exchange rate...";
   }
-  exchangeRateTxt.innerText = "Getting exchange rate...";
   let url = `https://v6.exchangerate-api.com/v6/f40b90e8e0fe9ec60f229262/latest/${fromCurrency.value}`;
   fetch(url)
     .then((res) => res.json())
@@ -66,5 +68,7 @@ function getExchangeRate() {
       let exchangeRate = result.conversion_rates[toCurrency.value];
       let totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
       exchangeRateTxt.innerText = `${amountVal} ${fromCurrency.value} = ${totalExchangeRate} ${toCurrency.value}`;
-    });
+    }).catch(() => { //if user is offline or ony other error occured while fetching data then catch function will run
+      exchangeRateTxt.innerText = 'Something went wrong'
+    })
 }
